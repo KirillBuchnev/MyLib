@@ -1,26 +1,32 @@
-#ifndef VECTOR_H
-#define VECTOR_H
-#include "pch.h"
+#pragma once
 #include <vector>
 #include <cmath>
 #include <stdexcept>
 
 using namespace std;
 
-class Vector {
+namespace VectorMath {
 
-    vector<double> data; 
+    // Класс для работы с математическими векторами
+    class Vector {
+    private:
+        vector<double> data; // Внутренние данные вектора
 
-public:
-    Vector(const vector<double>& values);
+    public:
+        // Конструктор из списка значений
+        explicit Vector(const vector<double>& values);
 
-    double length() const;
+        // Вычисление длины вектора
+        double length() const;
 
-    void normalize();
+        // Нормализация вектора
+        void normalize();
 
-    double dotProduct(const Vector& other) const;
+        // Скалярное произведение с другим вектором
+        double dotProduct(const Vector& other) const;
 
-    const vector<double>& getData() const;
-};
+        // Получение внутренних данных
+        const vector<double>& getData() const;
+    };
 
-#endif 
+} // namespace VectorMath
