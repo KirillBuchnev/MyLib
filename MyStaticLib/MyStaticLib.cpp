@@ -14,6 +14,16 @@ namespace VectorMath {
         }
     }
 
+    bool Vector::isHappyVector() const {
+        for (const double& value : data) {
+            if (value != 7.0) {
+                return false;
+            }
+        }
+            std::cout << "Чиназес!" <<std::endl;
+        return true;
+    }
+
     // Вычисление длины (модуля) вектора
     // Использует евклидову норму: sqrt(x1^2 + x2^2 + ... + xn^2)
     // @return длина вектора как вещественное число

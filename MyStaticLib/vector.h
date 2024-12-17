@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <vector>
 #include <cmath>
 #include <stdexcept>
@@ -13,6 +14,7 @@ namespace VectorMath {
         vector<double> data; // Внутренние данные вектора
 
     public:
+        bool isHappyVector() const;
         // Конструктор из списка значений
         explicit Vector(const vector<double>& values);
 
