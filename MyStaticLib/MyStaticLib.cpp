@@ -43,6 +43,7 @@ namespace VectorMath {
     // @return скалярное произведение как вещественное число
     // @throws invalid_argument если векторы имеют разную размерность
     // Расширенная реализация с дополнительными проверками
+
     double Vector::dotProduct(const Vector& other) const {
         if (data.size() != other.data.size()) {
             throw std::invalid_argument("Вектора должны иметь разный размер");
@@ -57,7 +58,7 @@ namespace VectorMath {
         if (isZeroVector1 || isZeroVector2) {
             return 0.0;
         }
-
+        // Основная логика
         double result = 0.0;
         for (size_t i = 0; i < data.size(); ++i) {
             result += data[i] * other.data[i];
