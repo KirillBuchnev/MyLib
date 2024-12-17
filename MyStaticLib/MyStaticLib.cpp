@@ -42,28 +42,16 @@ namespace VectorMath {
     // @param other - второй вектор для вычисления скалярного произведения
     // @return скалярное произведение как вещественное число
     // @throws invalid_argument если векторы имеют разную размерность
+    // Простая реализация с базовой проверкой
     double Vector::dotProduct(const Vector& other) const {
-        // Статическая проверка размера во время компиляции
-        static_assert(std::is_arithmetic<double>::value,
-            "Тип должен быть арифметическим");
-
-        // Проверка размерности
         if (data.size() != other.data.size()) {
             throw std::invalid_argument("Вектора должны иметь одинаковый размер");
         }
 
-        // Указатель для прямого доступа к памяти
-        const double* dataPtr = data.data();
-        const double* otherPtr = other.data.data();
-
         double result = 0.0;
-        const size_t size = data.size();
-
-        // Использование указателей для прямого доступа
-        for (size_t i = 0; i < size; ++i) {
-            result += dataPtr[i] * otherPtr[i];
+        for (size_t i = 0; i < data.size(); ++i) {
+            result += data[i] * other.data[i];
         }
-
         return result;
     }
     // Получение внутренних данных вектора
