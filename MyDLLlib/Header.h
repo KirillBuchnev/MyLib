@@ -1,25 +1,29 @@
 #pragma once
-#include "pch.h"
-#include "..\MyStaticLib\vector.h"
-#include <iostream>
 #include <vector>
+#include "vector.h"
 
-extern "C" {
-    __declspec(dllexport) void* CreateDynamicVector(const double* values, int size);
-    __declspec(dllexport) void PrintDynamicVector(void* vec);
-    __declspec(dllexport) void* AddDynamicVectors(void* vec1, void* vec2);
-    __declspec(dllexport) double* GetVectorData(void* vec, int* size);
-    __declspec(dllexport) void DeleteDynamicVector(void* vec);
-}
+namespace VectorMath {
 
-class DynamicVector {
-private:
-    Vector* vector;
+    // Класс для работы с динамическими векторами
+    class DynamicVector {
+    private:
+        Vector* vector; // Указатель на внутренний вектор
 
-public:
-    DynamicVector(const std::vector<double>& values);
-    ~DynamicVector();
-    void printVector() const;
-    DynamicVector* add(const DynamicVector* other) const;
-    std::vector<double> getData() const;
-};
+    public:
+        // Конструктор из списка значений
+        explicit DynamicVector(const std::vector<double>& values);
+
+        // Деструктор
+        ~DynamicVector();
+
+        // Вывод вектора
+        void printVector() const;
+
+        // Сложение с другим вектором
+        DynamicVector* add(const DynamicVector* other) const;
+
+        // Получение данных
+        std::vector<double> getData() const;
+    };
+
+} // namespace VectorMath
